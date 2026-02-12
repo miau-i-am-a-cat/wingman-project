@@ -150,7 +150,7 @@
     background: var(--soft-white);
   }
 
-  .hero-inner { max-width: 1400px; margin: 0 auto; width: 100%; position: relative; }
+  .hero-inner { max-width: 1400px; margin: 0 auto; width: 100%; position: relative; overflow: visible; }
 
   .hero h1 {
     font-family: 'Archivo', sans-serif;
@@ -255,17 +255,20 @@
 
   .hero-video {
     position: absolute;
-    right: 2%;
-    bottom: 5%;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
     width: clamp(280px, 32vw, 520px);
     opacity: 0;
     animation: fadeIn 1.2s ease 1s forwards;
+    z-index: 5;
   }
 
   .hero-video video {
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 8px;
   }
 
   @keyframes fadeIn { to { opacity: 1; } }
