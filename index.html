@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --soft-white: #FBF5E2;
+    --soft-white: #FBF6E8;
     --charcoal: #2A2A28;
     --warm-gray: #D4D1CC;
     --accent-blue: #4A6FA5;
@@ -19,7 +19,7 @@
     --accent-green-light: #A3C4A8;
     --accent-green-glow: rgba(107, 143, 113, 0.15);
     --grid-line: rgba(42, 42, 40, 0.06);
-    --grid-line-strong: rgba(42, 42, 40, 0.12);
+    --grid-line-strong: rgba(42, 42, 40, 0.28);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,6 +29,8 @@
   body {
     font-family: 'Archivo', sans-serif;
     background: var(--soft-white);
+    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 60px 60px;
     color: var(--charcoal);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
@@ -39,12 +41,6 @@
     pointer-events: none; z-index: 9999; opacity: 0.025;
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-repeat: repeat; background-size: 256px;
-  }
-
-  .grid-bg {
-    position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-    background-size: 60px 60px; opacity: 0.7;
   }
 
   .content-wrap { position: relative; z-index: 1; }
@@ -75,10 +71,10 @@
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     padding: 24px 40px;
     display: flex; justify-content: space-between; align-items: center;
-    background: rgba(251, 245, 226, 0.6);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(42, 42, 40, 0.06);
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: none;
   }
 
   .nav-logo {
@@ -150,7 +146,7 @@
     background: var(--soft-white);
   }
 
-  .hero-inner { max-width: 1400px; margin: 0 auto; width: 100%; position: relative; overflow: visible; }
+  .hero-inner { max-width: 1400px; margin: 0 auto; width: 100%; position: relative; }
 
   .hero h1 {
     font-family: 'Archivo', sans-serif;
@@ -179,7 +175,7 @@
   .hero h1 sup {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.14em; font-weight: 400;
-    vertical-align: super; margin-left: 4px; letter-spacing: 0;
+    vertical-align: super; margin-left: -2px; letter-spacing: 0;
   }
 
   .hero h1 sup.sup-blue { color: var(--accent-blue); }
@@ -255,20 +251,17 @@
 
   .hero-video {
     position: absolute;
-    right: -5%;
-    top: 50%;
-    transform: translateY(-50%);
+    right: 2%;
+    bottom: 2%;
     width: clamp(280px, 32vw, 520px);
     opacity: 0;
     animation: fadeIn 1.2s ease 1s forwards;
-    z-index: 5;
   }
 
   .hero-video video {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px;
   }
 
   @keyframes fadeIn { to { opacity: 1; } }
@@ -292,37 +285,37 @@
   .cm-bl { bottom: 20px; left: 20px; }
   .cm-br { bottom: 20px; right: 20px; }
 
-  /* ── SERVICES TICKER ── */
-  .services-bar {
+  /* ── TAGLINE BAR ── */
+  .tagline-bar {
     border-top: 1px solid var(--grid-line-strong);
     border-bottom: 1px solid var(--grid-line-strong);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 11;
   }
 
-  .services-track { display: flex; animation: ticker 32s linear infinite; width: max-content; }
-  .services-track:hover { animation-play-state: paused; }
-
-  .service-item {
-    display: flex; align-items: center; gap: 14px;
-    padding: 26px 52px; white-space: nowrap;
-    border-right: 1px solid var(--grid-line-strong);
-    transition: background 0.3s; cursor: default;
+  .tagline-text {
+    font-family: 'Archivo', sans-serif;
+    font-size: clamp(36px, 5vw, 72px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    color: var(--charcoal);
+    display: inline-block;
+    line-height: 1;
+    padding: 0.3em 0;
   }
 
-  .service-item:hover { background: var(--accent-blue-glow); }
-  .service-item.green-hover:hover { background: var(--accent-green-glow); }
-
-  .service-num { font-family: 'IBM Plex Mono', monospace; font-size: 12px; font-weight: 500; }
-  .service-num.blue { color: var(--accent-blue); }
-  .service-num.green { color: var(--accent-green); }
-
-  .service-name { font-family: 'Archivo', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
-  .service-name.serif-interrupt.blue { font-size: 25px; color: var(--accent-blue); letter-spacing: -0.01em; }
-  .service-name.serif-interrupt.green { font-size: 25px; color: var(--accent-green); letter-spacing: -0.01em; }
-
-  @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+  .tagline-text em {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 1.1em;
+    color: var(--accent-green);
+    letter-spacing: -0.01em;
+  }
 
   /* ── PACK SECTION ── */
   .pack-section {
@@ -429,8 +422,6 @@
     align-items: baseline;
     gap: 12px;
     margin-bottom: 48px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--grid-line-strong);
   }
 
   .pack-timer-label {
@@ -617,10 +608,14 @@
   .pack-submit-arrow {
     transition: transform 0.3s;
     font-size: 18px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    transform: translateY(-2px);
   }
 
   .pack-submit:hover .pack-submit-arrow {
-    transform: translateX(4px);
+    transform: translateX(4px) translateY(-2px);
   }
 
   .pack-submit.submitted {
@@ -1079,6 +1074,15 @@
     margin-bottom: 32px;
   }
 
+  .merch-buy-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .merch-buy-row > .merch-size-row { align-self: flex-start; }
+  .merch-buy-row > .merch-buy { width: fit-content; min-width: calc(48px * 4 + 6px * 3); justify-content: center; }
+
   .merch-size-label {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 9px;
@@ -1124,16 +1128,16 @@
   .merch-buy {
     display: inline-flex;
     align-items: center;
-    gap: 16px;
-    padding: 18px 48px;
+    gap: 12px;
+    padding: 18px 36px;
     background: var(--charcoal);
     color: var(--soft-white);
     border: none;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.06em;
     cursor: pointer;
     position: relative;
     overflow: hidden;
@@ -1151,6 +1155,8 @@
 
   .merch-buy:hover::before { transform: translateX(0); }
   .merch-buy span { position: relative; z-index: 1; }
+  .merch-buy span:last-child { font-size: 18px; transform: translateY(-2px); transition: transform 0.3s; }
+  .merch-buy:hover span:last-child { transform: translateX(4px) translateY(-2px); }
 
   .merch-buy-note {
     font-family: 'IBM Plex Mono', monospace;
@@ -1166,7 +1172,12 @@
 
   @media (max-width: 768px) {
     .merch-section { padding: 100px 20px; }
-    .merch-buy { width: 100%; justify-content: center; }
+    .merch-product-name { display: inline; margin-bottom: 0; }
+    .merch-price-row { display: inline-flex; margin-left: 12px; margin-bottom: 24px; padding-bottom: 24px; }
+    .merch-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
+    .merch-size-row { margin-bottom: 0; }
+    .merch-buy-row { flex-direction: row; align-items: flex-end; gap: 16px; }
+    .merch-buy { flex: 1; justify-content: center; }
   }
 
   /* ── FOOTER ── */
@@ -1296,7 +1307,7 @@
   /* ── Responsive ── */
   @media (max-width: 1024px) {
     .hero-footnotes { position: static; flex-direction: row; gap: 20px; margin-top: 32px; flex-wrap: wrap; }
-    .hero-video { position: absolute; left: 50%; transform: translateX(-50%); top: -45vw; bottom: auto; right: auto; width: 50vw; max-width: 240px; z-index: 5; }
+    .hero-video { position: absolute; left: 55%; transform: translateX(-50%); top: -30vw; bottom: auto; right: auto; width: 50vw; max-width: 240px; z-index: 5; }
     .hero-video video { aspect-ratio: auto; object-fit: contain; }
     .pack-body { grid-template-columns: 1fr; gap: 60px; }
   }
@@ -1308,10 +1319,6 @@
     .hero h1 { font-size: clamp(56px, 14vw, 100px); }
     .hero-sub { font-size: 15px; max-width: 100%; }
     .hero-footnote { font-size: 14px; }
-    .service-item { padding: 22px 36px; }
-    .service-name { font-size: 18px; }
-    .service-name.serif-interrupt.blue,
-    .service-name.serif-interrupt.green { font-size: 20px; }
     .corner-mark, .visual-index { display: none; }
     .pack-section { padding: 100px 20px; }
     .pack-headline { font-size: clamp(36px, 10vw, 60px); }
@@ -1331,8 +1338,6 @@
 </style>
 </head>
 <body>
-
-<div class="grid-bg"></div>
 
 <div class="content-wrap">
 
@@ -1371,29 +1376,11 @@
         </video>
       </div>
     </div>
-  </section>
-
-  <!-- SERVICES TICKER -->
-  <div class="services-bar">
-    <div class="services-track">
-      <div class="service-item"><span class="service-num blue">01</span><span class="service-name">Strategy</span></div>
-      <div class="service-item green-hover"><span class="service-num green">02</span><span class="service-name serif-interrupt green">Identity</span></div>
-      <div class="service-item"><span class="service-num blue">03</span><span class="service-name">Web</span></div>
-      <div class="service-item green-hover"><span class="service-num green">04</span><span class="service-name serif-interrupt blue">Photography</span></div>
-      <div class="service-item"><span class="service-num blue">05</span><span class="service-name">Product</span></div>
-      <div class="service-item green-hover"><span class="service-num green">06</span><span class="service-name serif-interrupt green">Motion</span></div>
-      <div class="service-item"><span class="service-num blue">07</span><span class="service-name">AI</span></div>
-      <div class="service-item green-hover"><span class="service-num green">08</span><span class="service-name serif-interrupt blue">Fulfillment</span></div>
-      <div class="service-item"><span class="service-num blue">01</span><span class="service-name">Strategy</span></div>
-      <div class="service-item green-hover"><span class="service-num green">02</span><span class="service-name serif-interrupt green">Identity</span></div>
-      <div class="service-item"><span class="service-num blue">03</span><span class="service-name">Web</span></div>
-      <div class="service-item green-hover"><span class="service-num green">04</span><span class="service-name serif-interrupt blue">Photography</span></div>
-      <div class="service-item"><span class="service-num blue">05</span><span class="service-name">Product</span></div>
-      <div class="service-item green-hover"><span class="service-num green">06</span><span class="service-name serif-interrupt green">Motion</span></div>
-      <div class="service-item"><span class="service-num blue">07</span><span class="service-name">AI</span></div>
-      <div class="service-item green-hover"><span class="service-num green">08</span><span class="service-name serif-interrupt blue">Fulfillment</span></div>
+    <!-- TAGLINE BAR -->
+    <div class="tagline-bar">
+      <span class="tagline-text">So you can <em>fly.</em></span>
     </div>
-  </div>
+  </section>
 
   <!-- ═══════════════════════════════════════
        SECTION 2 — FREE ASSET PACK
@@ -1468,7 +1455,7 @@
               <input type="email" class="pack-input" placeholder="you@company.com">
             </div>
             <button class="pack-submit" id="packSubmit">
-              <span class="pack-submit-text">Build my brand pack</span>
+              <span class="pack-submit-text">See my transformation</span>
               <span class="pack-submit-arrow">→</span>
             </button>
           </div>
@@ -1514,7 +1501,7 @@
             <span class="disc-tag">Strategy</span>
           </div>
           <div class="disc-desc">
-            <div class="disc-desc-inner" data-text="Positioning, market analysis, competitive landscape, audience architecture. The strategic scaffolding everything else is built on.">Positioning, market analysis, competitive landscape, audience architecture. The strategic scaffolding everything else is built on.</div>
+            <div class="disc-desc-inner" data-text="Positioning, market analysis, competitive landscape, audience architecture. The scaffolding everything is built on.">Positioning, market analysis, competitive landscape, audience architecture. The scaffolding everything is built on.</div>
           </div>
         </div>
 
@@ -1528,7 +1515,7 @@
             <span class="disc-tag">Identity</span>
           </div>
           <div class="disc-desc">
-            <div class="disc-desc-inner" data-text="Logo systems, color architecture, typography, visual language, brand books. A complete identity that holds up everywhere it lives.">Logo systems, color architecture, typography, visual language, brand books. A complete identity that holds up everywhere it lives.</div>
+            <div class="disc-desc-inner" data-text="Logo systems, color architecture, typography, visual language. An identity that holds up everywhere.">Logo systems, color architecture, typography, visual language. An identity that holds up everywhere.</div>
           </div>
         </div>
 
@@ -1671,17 +1658,19 @@
             <div class="merch-spec"><span class="merch-spec-dot green"></span><span class="merch-spec-text">Pre-shrunk</span></div>
           </div>
 
-          <div class="merch-size-row">
-            <p class="merch-size-label">Size</p>
-            <div class="merch-sizes">
-              <button class="merch-size" data-size="S">S</button>
-              <button class="merch-size" data-size="M">M</button>
-              <button class="merch-size selected" data-size="L">L</button>
-              <button class="merch-size" data-size="XL">XL</button>
+          <div class="merch-buy-row">
+            <div class="merch-size-row">
+              <p class="merch-size-label">Size</p>
+              <div class="merch-sizes">
+                <button class="merch-size" data-size="S">S</button>
+                <button class="merch-size" data-size="M">M</button>
+                <button class="merch-size selected" data-size="L">L</button>
+                <button class="merch-size" data-size="XL">XL</button>
+              </div>
             </div>
-          </div>
 
-          <button class="merch-buy" id="merchBuy"><span>Add to Cart</span> <span>→</span></button>
+            <button class="merch-buy" id="merchBuy"><span>Add to Cart</span> <span>→</span></button>
+          </div>
           <p class="merch-buy-note">Ships within 5 to 7 business days.</p>
         </div>
       </div>
