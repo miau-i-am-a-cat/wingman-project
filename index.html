@@ -175,11 +175,13 @@
   .hero h1 sup {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.14em; font-weight: 400;
-    vertical-align: super; margin-left: -2px; letter-spacing: 0;
+    vertical-align: super; margin-left: 4px; letter-spacing: 0;
   }
 
   .hero h1 sup.sup-blue { color: var(--accent-blue); }
   .hero h1 sup.sup-green { color: var(--accent-green); }
+
+  .hero-brands-word + sup { margin-left: -10px; }
 
   .hero-brands-word { display: inline-block; position: relative; overflow: visible; padding-bottom: 0.5em; margin-bottom: -0.2em; }
 
@@ -819,366 +821,64 @@
     max-width: 560px;
   }
 
-  /* ── MERCH SECTION ── */
-  .merch-section {
-    padding: 140px 40px;
-    position: relative;
+
+  /* ── LET'S BUILD SECTION ── */
+  .build-section {
+    padding: 160px 40px;
+    text-align: center;
     border-top: 1px solid var(--grid-line-strong);
   }
 
-  .merch-frame {
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-  }
+  .build-inner { max-width: 1400px; margin: 0 auto; }
 
-  .merch-header-row {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+  .build-headline {
+    font-family: 'Archivo', sans-serif;
+    font-size: clamp(64px, 12vw, 200px);
+    font-weight: 900;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--charcoal);
     margin-bottom: 48px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--grid-line-strong);
   }
 
-  .merch-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 400;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: rgba(42, 42, 40, 0.4);
-  }
-
-  .merch-dotted {
-    flex: 1;
-    border-bottom: 1px dashed var(--grid-line-strong);
-  }
-
-  .merch-badge {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    padding: 4px 14px;
-    border: 1px solid var(--accent-green);
-    color: var(--accent-green);
-    background: var(--accent-green-glow);
-  }
-
-  .merch-headline {
-    font-family: 'Archivo', sans-serif;
-    font-size: clamp(32px, 4vw, 56px);
-    font-weight: 900;
-    letter-spacing: -0.035em;
-    line-height: 1.05;
-    color: var(--charcoal);
-    margin-bottom: 64px;
-  }
-
-  .merch-headline em {
+  .build-headline em {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
     font-weight: 400;
     color: var(--accent-green);
   }
 
-  .merch-brand {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 600;
-    color: #F08A0F;
-    letter-spacing: -0.01em;
-  }
-
-  .merch-sub {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(14px, 1.2vw, 16px);
-    color: rgba(42, 42, 40, 0.45);
-    max-width: 500px;
-    line-height: 1.7;
-    margin-bottom: 64px;
-  }
-
-  .merch-product {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-  }
-
-  .merch-gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .merch-img-main {
-    width: 100%;
-    aspect-ratio: 1;
-    background: rgba(42, 42, 40, 0.04);
-    border: 1px solid var(--grid-line-strong);
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-  }
-
-  .merch-img-main img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .merch-img-main .merch-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(42, 42, 40, 0.15);
-  }
-
-  .merch-thumbs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-  }
-
-  .merch-thumb {
-    aspect-ratio: 1;
-    background: rgba(42, 42, 40, 0.04);
-    border: 1px solid var(--grid-line-strong);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    transition: border-color 0.3s;
-  }
-
-  .merch-thumb.active {
-    border-color: var(--accent-blue);
-  }
-
-  .merch-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-  }
-
-  .merch-thumb .merch-placeholder {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(42, 42, 40, 0.12);
-  }
-
-  .merch-details {
-    padding-top: 20px;
-  }
-
-  .merch-product-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--accent-blue);
-    margin-bottom: 16px;
-  }
-
-  .merch-product-name {
-    font-family: 'Archivo', sans-serif;
-    font-size: clamp(28px, 3vw, 44px);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    color: var(--charcoal);
-    margin-bottom: 20px;
-  }
-
-  .merch-product-name em {
-    font-family: 'Instrument Serif', serif;
-    font-style: italic;
-    font-weight: 400;
-    color: var(--accent-green);
-  }
-
-  .merch-price-row {
-    display: flex;
-    align-items: baseline;
-    gap: 16px;
-    margin-bottom: 32px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--grid-line-strong);
-  }
-
-  .merch-price {
-    font-family: 'Archivo', sans-serif;
-    font-size: 36px;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    color: var(--charcoal);
-  }
-
-  .merch-price-note {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: rgba(42, 42, 40, 0.5);
-    letter-spacing: 0.02em;
-  }
-
-  .merch-specs {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    margin-bottom: 40px;
-  }
-
-  .merch-spec {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(42, 42, 40, 0.05);
-  }
-
-  .merch-spec-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  .merch-spec-dot.blue { background: var(--accent-blue); }
-  .merch-spec-dot.green { background: var(--accent-green); }
-
-  .merch-spec-text {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: rgba(42, 42, 40, 0.55);
-  }
-
-  /* Size selector */
-  .merch-size-row {
-    margin-bottom: 32px;
-  }
-
-  .merch-buy-row {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .merch-buy-row > .merch-size-row { align-self: flex-start; }
-  .merch-buy-row > .merch-buy { width: fit-content; min-width: calc(48px * 4 + 6px * 3); justify-content: center; }
-
-  .merch-size-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 9px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: rgba(42, 42, 40, 0.5);
-    margin-bottom: 12px;
-  }
-
-  .merch-sizes {
-    display: flex;
-    gap: 6px;
-  }
-
-  .merch-size {
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid var(--grid-line-strong);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    font-weight: 500;
-    color: rgba(42, 42, 40, 0.5);
-    cursor: pointer;
-    transition: all 0.3s;
-    background: transparent;
-  }
-
-  .merch-size:hover {
-    border-color: rgba(42, 42, 40, 0.25);
-    color: var(--charcoal);
-  }
-
-  .merch-size.selected {
-    border-color: var(--accent-blue);
-    color: var(--accent-blue);
-    background: var(--accent-blue-glow);
-  }
-
-  .merch-buy {
+  .build-cta {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 18px 36px;
-    background: var(--charcoal);
-    color: var(--soft-white);
-    border: none;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 14px;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.06em;
-    cursor: pointer;
+    color: var(--soft-white);
+    background: var(--charcoal);
+    padding: 18px 36px;
+    text-decoration: none;
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .merch-buy::before {
+  .build-cta::before {
     content: '';
     position: absolute;
     inset: 0;
     background: linear-gradient(135deg, var(--accent-blue), var(--accent-green));
     transform: translateX(-101%);
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .merch-buy:hover::before { transform: translateX(0); }
-  .merch-buy span { position: relative; z-index: 1; }
-  .merch-buy span:last-child { font-size: 18px; transform: translateY(-2px); transition: transform 0.3s; }
-  .merch-buy:hover span:last-child { transform: translateX(4px) translateY(-2px); }
-
-  .merch-buy-note {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: rgba(42, 42, 40, 0.5);
-    margin-top: 16px;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 1024px) {
-    .merch-product { grid-template-columns: 1fr; gap: 48px; }
-  }
-
-  @media (max-width: 768px) {
-    .merch-section { padding: 100px 20px; }
-    .merch-product-name { display: inline; margin-bottom: 0; }
-    .merch-price-row { display: inline-flex; margin-left: 12px; margin-bottom: 24px; padding-bottom: 24px; }
-    .merch-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; }
-    .merch-size-row { margin-bottom: 0; }
-    .merch-buy-row { flex-direction: row; align-items: flex-end; gap: 16px; }
-    .merch-buy { flex: 1; justify-content: center; }
-  }
+  .build-cta:hover::before { transform: translateX(0); }
+  .build-cta span { position: relative; z-index: 1; }
+  .build-arrow { font-size: 18px; transform: translateY(-2px); transition: transform 0.3s; }
+  .build-cta:hover .build-arrow { transform: translateX(4px) translateY(-2px); }
 
   /* ── FOOTER ── */
   .site-footer {
@@ -1292,6 +992,7 @@
   }
 
   @media (max-width: 768px) {
+    .build-section { padding: 100px 20px; }
     .site-footer { padding: 60px 20px 32px; }
     .footer-top { grid-template-columns: 1fr; gap: 40px; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
@@ -1307,13 +1008,16 @@
   /* ── Responsive ── */
   @media (max-width: 1024px) {
     .hero-footnotes { position: static; flex-direction: row; gap: 20px; margin-top: 32px; flex-wrap: wrap; }
-    .hero-video { position: absolute; left: 55%; transform: translateX(-50%); top: -30vw; bottom: auto; right: auto; width: 50vw; max-width: 240px; z-index: 5; }
+    .hero-video { position: absolute; left: 60%; transform: translateX(-50%); top: -30vw; bottom: auto; right: auto; width: 50vw; max-width: 240px; z-index: 5; }
     .hero-video video { aspect-ratio: auto; object-fit: contain; }
     .pack-body { grid-template-columns: 1fr; gap: 60px; }
   }
 
   @media (max-width: 768px) {
     nav { padding: 18px 20px; }
+    .nav-logo { font-size: 15px; gap: 8px; }
+    .nav-logo-dot { width: 6px; height: 6px; }
+    .nav-cta { font-size: 11px; padding: 10px 18px; }
     .nav-links { display: none; }
     .hero { padding: 120px 20px 60px; }
     .hero h1 { font-size: clamp(56px, 14vw, 100px); }
@@ -1369,7 +1073,7 @@
         <span class="hero-footnote"><span class="fn-num green">2</span><span class="fn-line green"></span> from scratch</span>
         <span class="hero-footnote"><span class="fn-num blue">3</span><span class="fn-line blue"></span> that last.</span>
       </div>
-      <p class="hero-sub">Function & beauty built for your bottom line. Full service support at home in Los Angeles.</p>
+      <p class="hero-sub">Full service, end-to-end execution so your team can focus on growth.</p>
       <div class="hero-video">
         <video autoplay muted loop playsinline>
           <source src="hero-video.mp4" type="video/mp4">
@@ -1523,6 +1227,34 @@
           <div class="disc-row-main">
             <span class="disc-num">003</span>
             <div class="disc-content">
+              <span class="disc-title">Ad Creative</span>
+              <span class="disc-serif blue">stop the scroll, start the sale</span>
+            </div>
+            <span class="disc-tag">Ads</span>
+          </div>
+          <div class="disc-desc">
+            <div class="disc-desc-inner" data-text="Performance-tested creative for paid social, search, and display. Assets that actually convert — not just look good in a deck.">Performance-tested creative for paid social, search, and display. Assets that actually convert — not just look good in a deck.</div>
+          </div>
+        </div>
+
+        <div class="disc-row green reveal">
+          <div class="disc-row-main">
+            <span class="disc-num">004</span>
+            <div class="disc-content">
+              <span class="disc-title">Email & Retention</span>
+              <span class="disc-serif green">bring them back for more</span>
+            </div>
+            <span class="disc-tag">Email</span>
+          </div>
+          <div class="disc-desc">
+            <div class="disc-desc-inner" data-text="Welcome sequences, abandoned cart flows, campaigns. Built to bring customers back, not just land in a spam folder.">Welcome sequences, abandoned cart flows, campaigns. Built to bring customers back, not just land in a spam folder.</div>
+          </div>
+        </div>
+
+        <div class="disc-row blue reveal">
+          <div class="disc-row-main">
+            <span class="disc-num">005</span>
+            <div class="disc-content">
               <span class="disc-title">Web Design & Dev</span>
               <span class="disc-serif blue">your best first impression</span>
             </div>
@@ -1535,7 +1267,7 @@
 
         <div class="disc-row green reveal">
           <div class="disc-row-main">
-            <span class="disc-num">004</span>
+            <span class="disc-num">006</span>
             <div class="disc-content">
               <span class="disc-title">Product Photography</span>
               <span class="disc-serif green">see it to believe it</span>
@@ -1549,24 +1281,10 @@
 
         <div class="disc-row blue reveal">
           <div class="disc-row-main">
-            <span class="disc-num">005</span>
-            <div class="disc-content">
-              <span class="disc-title">Ad Creative</span>
-              <span class="disc-serif blue">stop the scroll, start the sale</span>
-            </div>
-            <span class="disc-tag">Ads</span>
-          </div>
-          <div class="disc-desc">
-            <div class="disc-desc-inner" data-text="Performance-tested creative for paid social, search, and display. Assets that actually convert — not just look good in a deck.">Performance-tested creative for paid social, search, and display. Assets that actually convert — not just look good in a deck.</div>
-          </div>
-        </div>
-
-        <div class="disc-row green reveal">
-          <div class="disc-row-main">
-            <span class="disc-num">006</span>
+            <span class="disc-num">007</span>
             <div class="disc-content">
               <span class="disc-title">Content & Social</span>
-              <span class="disc-serif green">stay top of mind</span>
+              <span class="disc-serif blue">stay top of mind</span>
             </div>
             <span class="disc-tag">Content</span>
           </div>
@@ -1575,12 +1293,12 @@
           </div>
         </div>
 
-        <div class="disc-row blue reveal">
+        <div class="disc-row green reveal">
           <div class="disc-row-main">
-            <span class="disc-num">007</span>
+            <span class="disc-num">008</span>
             <div class="disc-content">
               <span class="disc-title">Motion & Video</span>
-              <span class="disc-serif blue">make them look twice</span>
+              <span class="disc-serif green">make them look twice</span>
             </div>
             <span class="disc-tag">Motion</span>
           </div>
@@ -1588,92 +1306,19 @@
             <div class="disc-desc-inner" data-text="Animated assets, social video, product demos, brand films. Movement that stops the scroll.">Animated assets, social video, product demos, brand films. Movement that stops the scroll.</div>
           </div>
         </div>
-
-        <div class="disc-row green reveal">
-          <div class="disc-row-main">
-            <span class="disc-num">008</span>
-            <div class="disc-content">
-              <span class="disc-title">Email & Retention</span>
-              <span class="disc-serif green">bring them back for more</span>
-            </div>
-            <span class="disc-tag">Email</span>
-          </div>
-          <div class="disc-desc">
-            <div class="disc-desc-inner" data-text="Welcome sequences, abandoned cart flows, campaigns. Built to bring customers back, not just land in a spam folder.">Welcome sequences, abandoned cart flows, campaigns. Built to bring customers back, not just land in a spam folder.</div>
-          </div>
-        </div>
       </div>
 
     </div>
   </section>
 
+
   <!-- ═══════════════════════════════════════
-       SECTION 4 — MERCH
+       SECTION 5 — LET'S BUILD
        ═══════════════════════════════════════ -->
-  <section class="merch-section" id="merch">
-    <div class="corner-mark cm-tl cm-blue"></div>
-    <div class="corner-mark cm-tr cm-green"></div>
-    <div class="corner-mark cm-bl cm-green"></div>
-    <div class="corner-mark cm-br cm-blue"></div>
-    <div class="merch-frame">
-      <div class="merch-header-row">
-        <span class="merch-label">Merch</span>
-        <span class="merch-dotted"></span>
-        <span class="merch-badge">Limited</span>
-      </div>
-
-      <h2 class="merch-headline reveal">Represent your <span class="merch-brand">wingman.</span></h2>
-
-      <div class="merch-product reveal">
-        <div class="merch-gallery">
-          <div class="merch-img-main" id="merchMainImg">
-            <div class="merch-placeholder">Image 1</div>
-          </div>
-          <div class="merch-thumbs">
-            <div class="merch-thumb active" data-index="0">
-              <div class="merch-placeholder">01</div>
-            </div>
-            <div class="merch-thumb" data-index="1">
-              <div class="merch-placeholder">02</div>
-            </div>
-            <div class="merch-thumb" data-index="2">
-              <div class="merch-placeholder">03</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="merch-details">
-          <p class="merch-product-tag">Wingman Essentials</p>
-          <h3 class="merch-product-name">Butterfly <em>Tee</em></h3>
-
-          <div class="merch-price-row">
-            <span class="merch-price">$39</span>
-            <span class="merch-price-note">Free shipping</span>
-          </div>
-
-          <div class="merch-specs">
-            <div class="merch-spec"><span class="merch-spec-dot blue"></span><span class="merch-spec-text">100% cotton heavyweight</span></div>
-            <div class="merch-spec"><span class="merch-spec-dot green"></span><span class="merch-spec-text">Relaxed fit</span></div>
-            <div class="merch-spec"><span class="merch-spec-dot blue"></span><span class="merch-spec-text">Screen printed graphic</span></div>
-            <div class="merch-spec"><span class="merch-spec-dot green"></span><span class="merch-spec-text">Pre-shrunk</span></div>
-          </div>
-
-          <div class="merch-buy-row">
-            <div class="merch-size-row">
-              <p class="merch-size-label">Size</p>
-              <div class="merch-sizes">
-                <button class="merch-size" data-size="S">S</button>
-                <button class="merch-size" data-size="M">M</button>
-                <button class="merch-size selected" data-size="L">L</button>
-                <button class="merch-size" data-size="XL">XL</button>
-              </div>
-            </div>
-
-            <button class="merch-buy" id="merchBuy"><span>Add to Cart</span> <span>→</span></button>
-          </div>
-          <p class="merch-buy-note">Ships within 5 to 7 business days.</p>
-        </div>
-      </div>
+  <section class="build-section">
+    <div class="build-inner">
+      <h2 class="build-headline reveal">Let's <em>build.</em></h2>
+      <a href="mailto:hello@thewingmanproject.com" class="build-cta reveal"><span>Get in touch</span> <span class="build-arrow">→</span></a>
     </div>
   </section>
 
@@ -1694,7 +1339,6 @@
           <ul class="footer-links">
             <li><a href="#pack">Free Brand Pack</a></li>
             <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="#merch">Merch</a></li>
             <li><a href="/terms">Terms & Conditions</a></li>
           </ul>
         </div>
@@ -1836,43 +1480,6 @@
     });
   }
 
-  // Merch gallery
-  const thumbs = document.querySelectorAll('.merch-thumb');
-  const mainImg = document.getElementById('merchMainImg');
-  const imgLabels = ['Image 1', 'Image 2', 'Image 3'];
-
-  thumbs.forEach(thumb => {
-    thumb.addEventListener('click', () => {
-      thumbs.forEach(t => t.classList.remove('active'));
-      thumb.classList.add('active');
-      const idx = parseInt(thumb.dataset.index);
-      mainImg.querySelector('.merch-placeholder').textContent = imgLabels[idx];
-    });
-  });
-
-  // Merch size selector
-  document.querySelectorAll('.merch-size').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.merch-size').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-    });
-  });
-
-  // Merch buy button
-  const merchBuy = document.getElementById('merchBuy');
-  if (merchBuy) {
-    merchBuy.addEventListener('click', function() {
-      const selected = document.querySelector('.merch-size.selected');
-      if (selected) {
-        this.querySelector('span:first-child').textContent = 'Added ✓';
-        this.style.pointerEvents = 'none';
-        setTimeout(() => {
-          this.querySelector('span:first-child').textContent = 'Add to Cart';
-          this.style.pointerEvents = '';
-        }, 2000);
-      }
-    });
-  }
 </script>
 </body>
 </html>
