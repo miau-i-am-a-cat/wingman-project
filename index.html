@@ -984,6 +984,19 @@
     letter-spacing: 0.02em;
   }
 
+  .footer-terms {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: rgba(42, 42, 40, 0.4);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-terms:hover {
+    color: var(--accent-blue);
+  }
+
   .footer-made em {
     font-family: 'Instrument Serif', serif;
     font-style: italic;
@@ -1335,15 +1348,6 @@
         </div>
 
         <div class="footer-col">
-          <p class="footer-col-title">Navigate</p>
-          <ul class="footer-links">
-            <li><a href="#pack">Free Brand Pack</a></li>
-            <li><a href="#capabilities">Capabilities</a></li>
-            <li><a href="/terms">Terms & Conditions</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
           <p class="footer-col-title">Connect</p>
           <ul class="footer-links">
             <li><a href="mailto:hello@thewingmanproject.com">hello@thewingmanproject.com</a></li>
@@ -1355,6 +1359,7 @@
 
       <div class="footer-bottom">
         <span class="footer-copy">© 2026 Wingman Labs, Inc. All rights reserved.</span>
+        <a href="/terms" class="footer-terms">Terms & Conditions</a>
         <span class="footer-made">Built with <em>intention.</em></span>
       </div>
     </div>
