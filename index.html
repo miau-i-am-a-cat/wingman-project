@@ -1158,24 +1158,24 @@
 
         <!-- Form -->
         <div class="pack-form-wrap reveal">
-          <div class="pack-form">
+          <form class="pack-form" action="https://formspree.io/f/mqedplgy" method="POST">
             <div class="pack-field">
               <label class="pack-field-label">Brand / Company Name</label>
-              <input type="text" class="pack-input" placeholder="Acme Inc.">
+              <input type="text" name="company" class="pack-input" placeholder="Acme Inc." required>
             </div>
             <div class="pack-field">
               <label class="pack-field-label">Website</label>
-              <input type="url" class="pack-input" placeholder="https://yoursite.com">
+              <input type="url" name="website" class="pack-input" placeholder="https://yoursite.com" required>
             </div>
             <div class="pack-field">
               <label class="pack-field-label">Email</label>
-              <input type="email" class="pack-input" placeholder="you@company.com">
+              <input type="email" name="email" class="pack-input" placeholder="you@company.com" required>
             </div>
-            <button class="pack-submit" id="packSubmit">
+            <button type="submit" class="pack-submit" id="packSubmit">
               <span class="pack-submit-text">See my transformation</span>
               <span class="pack-submit-arrow">→</span>
             </button>
-          </div>
+          </form>
           <p class="pack-note">No call required. No commitment.</p>
         </div>
       </div>
@@ -1462,25 +1462,40 @@
   }
 
   // Pack form submit
-  const packBtn = document.getElementById('packSubmit');
-  if (packBtn) {
-    packBtn.addEventListener('click', function() {
+  const packForm = document.querySelector('.pack-form');
+  if (packForm) {
+    packForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const btn = document.getElementById('packSubmit');
       const inputs = document.querySelectorAll('.pack-input');
-      const allFilled = Array.from(inputs).every(i => i.value.trim());
-      if (allFilled) {
-        this.classList.add('submitted');
-        this.querySelector('.pack-submit-text').textContent = "We'll be in touch";
-        this.querySelector('.pack-submit-arrow').textContent = '✓';
-        inputs.forEach(i => { i.disabled = true; i.style.opacity = '0.5'; });
-      } else {
-        inputs.forEach(i => {
-          if (!i.value.trim()) {
-            i.style.borderBottomColor = '#C45A3A';
-            setTimeout(() => { i.style.borderBottomColor = ''; }, 2000);
-          }
+      
+      btn.classList.add('submitted');
+      btn.querySelector('.pack-submit-text').textContent = "Sending...";
+      
+      try {
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: new FormData(this),
+          headers: { 'Accept': 'application/json' }
         });
-        const empty = Array.from(inputs).find(i => !i.value.trim());
-        if (empty) empty.focus();
+        
+        if (response.ok) {
+          btn.querySelector('.pack-submit-text').textContent = "We'll be in touch";
+          btn.querySelector('.pack-submit-arrow').textContent = '✓';
+          inputs.forEach(i => { i.disabled = true; i.style.opacity = '0.5'; });
+        } else {
+          btn.classList.remove('submitted');
+          btn.querySelector('.pack-submit-text').textContent = "Error - try again";
+          setTimeout(() => {
+            btn.querySelector('.pack-submit-text').textContent = "See my transformation";
+          }, 3000);
+        }
+      } catch (error) {
+        btn.classList.remove('submitted');
+        btn.querySelector('.pack-submit-text').textContent = "Error - try again";
+        setTimeout(() => {
+          btn.querySelector('.pack-submit-text').textContent = "See my transformation";
+        }, 3000);
       }
     });
   }
